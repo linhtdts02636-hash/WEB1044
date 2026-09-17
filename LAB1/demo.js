@@ -14,6 +14,9 @@ console.log(typeof notDefined === "undefined")
 let nothing = null
 console.log(typeof nothing === "object")
 
+console.log(typeof 23.4)
+
+
 console.log("10" + 5)
 console.log("10" - 5)
 console.log(Number("123"))
