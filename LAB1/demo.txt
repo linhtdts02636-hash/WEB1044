@@ -1,0 +1,29 @@
+Trần Duy Linh
+
+Bài 2:
+let salary = 1000.5 là kiểu dữ liệu float
+var isActive = true là kiểu dữ liệu boolean
+let nothing = null là kiểu dữ liệu null (do trong lúc phát triển ngôn ngữ, lập trình viên rush nên mới bị không nhất quán về kiểu dữ liệu của null)
+const notDefined = undefined là kiểu dữ liệu undefined
+
+để khai báo một cách an toàn hơn, nên sử dụng let/const thay vì var trong lập trình JS hiện đại. Bởi vì: var đôi lúc bị rỉ logic ra các function khác, và có nguy cơ bị ghi đè khai báo lại nếu không cẩn thận.
+
+Bài 3:
+console.log("10" + 5) ra "105" (string)
+console.log("10" - 5) ra 5 (int)
+console.log(Number("123")) ra 123 (int)
+console.log(String(123)) ra "123" (string)
+console.log(Boolean("")) ra false (bool)
+console.log(+"10") ra 10 (int)
+
+console.log("10" + 5) ra "105" (string)
+-Dòng này ra kết quả khá lạ do nếu là các ngôn ngữ khác thì sẽ bị lỗi, nhưng do JS tự động ép kiểu khi 2 dữ liệu concat với nhau, nên 5 (int) -> "5"(string) rồi concat với "10"
+-Để rõ ràng hơn, ta nên viết 5 (int) thành "5" (string)
+
+console.log("10" - 5) ra 5 (int)
+-Dòng này ra kết quả là 5, tương tự như ở trên, JS tự động ép kiểu, và do "-" không phải là dấu dùng để concat, mà là phép toán tử tính toán số học, nên JS chuyển "10" (string) -> 10 (int) và 10 - 5 = 5 (int)
+-Để rõ ràng hơn, ta nên viết "10" (string) thành 10 (int) 
+
+console.log(+"10") ra 10 (int)
+-Dòng này biến "10" (string) thành 10 (int), do dấu đơn cộng đặc biệt ở trước "10", thuộc tính của phép toán tử là biến các dữ liệu thành kiểu số, nên ở đây "10" (string) được chuyển thành dạng 10 (int)
+-Để rõ ràng hơn, ta có thể đơn giản khai báo là 10 (int) thay vì "10" (string)
