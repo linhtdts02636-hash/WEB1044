@@ -16,4 +16,4 @@ function multiplicationTabl() {
   }
 }
 
-multiplicationTabl(2);
+multiplicationTabl();

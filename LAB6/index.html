@@ -1,11 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <script src="demo.js"></script>
-</body>
+  </head>
+  <body>
+    <script>
+      function studentWindow() {
+        const width = 600;
+        const height = 400;
+
+        const left = (screen.width - width) / 2;
+        const top = (screen.height - height) / 2;
+
+        const studentWindow = window.open(
+          "",
+          "student_info",
+          `width=${width}, height=${height}, top=${top}, left=${left} `,
+        );
+        studentWindow.document.write(`
+                                TS0236436, Tran Duy Linh, SD21304
+                          `);
+      }
+      studentWindow();
+    </script>
+  </body>
 </html>

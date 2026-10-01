@@ -4,11 +4,7 @@
 function isPrime(input) {
   result = false;
   switch (true) {
-    case input === 1:
-      result = true;
-      console.log(result);
-      break;
-    case input === 2:
+    case input <= 2:
       result = true;
       console.log(result);
       break;
@@ -32,5 +28,8 @@ function isPrime(input) {
     console.log(result)
 
 }
+const numbers = [2, 4, 5, 9, 11, 12, 17, 21, 23, 29];
 
-isPrime(34)
+numbers.forEach((number)=>{
+  isPrime(number)
+})

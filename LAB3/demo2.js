@@ -5,17 +5,29 @@
 // Input: " xin chao cac ban. hom nay troi dep qua !toi di hoc ve ? "
 // Output: "Xin chao cac ban. Hom nay troi dep qua! Toi di hoc ve?"
 
-function normalizeSentence(input){
-    if(!input){
-        return("actually type something you silly willy")
-    }
+function normalizeSentence(input) {
+  if (!input) {
+    return "actually type something you silly willy";
+  }
 
-    input = input.charAt(0).toUpperCase() + input.slice(1)
+  input = input.charAt(0).toUpperCase() + input.slice(1);
 
-    input = input.trim().replace(/\s+/g, ' ');
+  input = input.trim().replace(/\s+/g, " ");
 
-    return(input)
+  input = input.trim().replace(/\s+[!?.]/g, (match) => {
+    return match.trim();
+  });
+
+  input = input.trim().replace(/[!?.][a-zA-Z]/g, (match) => {
+    return match.charAt(0) + ' '+ match.charAt(1).toUpperCase() + match.slice(2)
+  });
+
+    input = input.trim().replace(/[!?.]\s+[a-zA-Z]/g, (match) => {
+    return match.charAt(0) +' '+ match.charAt(2).toUpperCase() + match.slice(3)
+  });
+
+  return input;
 }
 
-let str = "hi    hello how are yooou"
-console.log(normalizeSentence(str))
+let str = " xin chao cac ban. hom nay troi dep qua !toi di hoc ve ? ";
+console.log(normalizeSentence(str));
