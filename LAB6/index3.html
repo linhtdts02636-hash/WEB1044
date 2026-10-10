@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .card-body {
+    position: relative;
+    width: 200px;
+    height:270px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding: 15px;
+  }
+
+  .card-thing {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .product {
+    flex: 2;
+    max-height: 500px;
+    max-width: 250px;
+    width: 250px;
+  box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+
+
+
+  }
+
+  .card-content {
+    line-height: 5px;
+  }
+
+  .card-img {
+
+    border-radius: 15px;
+    width:200px;
+    height:150px;
+    object-fit:cover
+  }
+
+  .price {
+    color: red
+  }
+
+  .button {
+    background: rgb(118, 185, 118);
+    color: white;
+    border-radius: 15px;
+    border: none;
+    padding: 15px
+  }
+</style>
+
+<body>
+  <h2 style="text-align: center;">Product list</h2>
+  <div class="card-thing" id="cardthing">
+  </div>
+  </div>
+  <script src="demo2.js"></script>
+</body>
+
+</html>
