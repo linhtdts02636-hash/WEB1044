@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <link rel="icon" href="images/logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&&family=Montserrat:ital,wght@0,100..900;1,100..900&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="navbar"></div>
+
+    <main>
+        <div class="container">
+            <section class="p-5">
+                <div class="text-center mb-4">
+                    <h1 class="hero-title fw-bold">ĐĂNG NHẬP</h1>
+                    <p class="hero-eyebrow">Đăng nhập để tiếp tục tham gia hội thi</p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-6 col-lg-5">
+                        <div class="alert alert-danger d-none" id="loginFailure">
+                            <i class="bi bi-x-circle-fill"></i> <span id="failureText"></span>
+                        </div>
+                        <div class="alert alert-success d-none" id="loginSuccess">
+                            <i class="bi bi-check-circle-fill"></i> Đăng nhập thành công! Đang chuyển hướng...
+                        </div>
+                        <form id="loginForm" novalidate>
+                            <div class="mb-3">
+                                <label for="loginEmail" class="form-label">Email / Tài khoản <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="loginEmail" placeholder="nguyenvana@gmail.com">
+                                <div class="invalid-feedback" id="accountErr"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="loginPass" class="form-label">Mật khẩu <span class="text-danger">*</span></label>
+                                <input type="password" class="form-control" id="loginPass" placeholder="Mật khẩu của bạn">
+                                <div class="invalid-feedback" id="loginPassErr"></div>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Đăng nhập <i class="bi bi-box-arrow-in-right"></i></button>
+                        </form>
+                        <p class="text-center mt-3">Chưa có tài khoản? <a href="dang-ky.html" class="link-primary">Đăng ký ngay</a></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+    <script src="js/footer.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script>
+        function getUsers() {
+            return JSON.parse(localStorage.getItem("users") || "[]");
+        }
+
+        const form = document.getElementById("loginForm");
+        const failure = document.getElementById("loginFailure");
+        const failureText = document.getElementById("failureText");
+        const success = document.getElementById("loginSuccess");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            let valid = true;
+
+            const emailIn = document.getElementById("loginEmail");
+            const passIn = document.getElementById("loginPass");
+            emailIn.classList.remove("is-invalid");
+            passIn.classList.remove("is-invalid");
+            failure.classList.add("d-none");
+
+            const email = emailIn.value.trim();
+            if (!email) {
+                emailIn.classList.add("is-invalid");
+                document.getElementById("accountErr").textContent = "Vui lòng nhập email.";
+                valid = false;
+            }
+
+            const pass = passIn.value;
+            if (!pass) {
+                passIn.classList.add("is-invalid");
+                document.getElementById("loginPassErr").textContent = "Vui lòng nhập mật khẩu.";
+                valid = false;
+            }
+
+            if (valid) {
+                const users = getUsers();
+                const user = users.find(function (u) {
+                    return u.email.toLowerCase() === email.toLowerCase();
+                });
+                if (!user) {
+                    failureText.textContent = "Tài khoản chưa được đăng ký. Vui lòng tạo tài khoản mới.";
+                    failure.classList.remove("d-none");
+                } else if (user.password !== pass) {
+                    failureText.textContent = "Sai mật khẩu. Vui lòng kiểm tra lại.";
+                    failure.classList.remove("d-none");
+                } else {
+                    localStorage.setItem("currentUser", JSON.stringify({ name: user.name, email: user.email }));
+                    success.classList.remove("d-none");
+                    setTimeout(function () {
+                        window.location.href = "index.html";
+                    }, 1500);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

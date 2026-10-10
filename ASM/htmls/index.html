@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <link rel="icon" href="images/logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&&family=Montserrat:ital,wght@0,100..900;1,100..900&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .slide-img { display: none; }
+        .slide-img.active { display: block; }
+        #backToTop { display: none; position: fixed; right: 20px; bottom: 24px; border-radius: 50%; z-index: 1050; }
+    </style>
+</head>
+
+<body>
+    <div id="navbar"></div>
+
+    <main>
+        <section class="hero-section p-5">
+            <div class="container text-center">
+                <p class="hero-eyebrow">Hội thi "Học sinh, Sinh viên Giỏi Nghề" – Lần 16, Năm 2026</p>
+                <h1 class="hero-title display-3 fw-bold">THI TRẮC NGHIỆM <br> TRỰC TUYẾN</h1>
+                <p class="hero-eyebrow">Chọn bài thi và thực hiện trên nền tảng số</p>
+            </div>
+        </section>
+
+        <div class="container position-relative mb-5">
+            <div id="slider">
+                <img src="images/su.png" class="slide-img card-img-top active">
+                <img src="images/toan.png" class="slide-img card-img-top">
+                <img src="images/van.png" class="slide-img card-img-top">
+                <img src="images/sinh.png" class="slide-img card-img-top">
+            </div>
+            <button id="prevBtn" class="btn btn-primary position-absolute start-0 top-50 translate-middle-y">‹</button>
+            <button id="nextBtn" class="btn btn-primary position-absolute end-0 top-50 translate-middle-y">›</button>
+        </div>
+
+        <section class="container">
+            <div class="section-title fw-bold fs-2 text-center p-5">BÀI THI MỚI</div>
+            <div id="exam-container" class="row gy-4 gx-4" data-limit="6"></div>
+        </section>
+
+        <section class="container text-center p-5">
+            <button id="toggleBtn" class="btn btn-primary" onclick="redirect()">Xem thêm</button>
+        </section>
+    </main>
+
+    <button id="backToTop" class="btn btn-primary" onclick="scrollToTop()"><i class="bi bi-arrow-up"></i></button>
+
+    <div id="footer"></div>
+    <script src="js/footer.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="js/home.js"></script>
+    <script src="js/exam-card.js" type="module"></script>
+</body>
+
+</html>
